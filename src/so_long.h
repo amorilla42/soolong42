@@ -6,7 +6,7 @@
 /*   By: amorilla <amorilla@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 13:49:01 by amorilla          #+#    #+#             */
-/*   Updated: 2023/03/12 16:27:03 by amorilla         ###   ########.fr       */
+/*   Updated: 2023/03/12 17:26:07 by amorilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ int		print_error(char *str_error);
 int		map_inner_check(t_data *data);
 void	load_sprites(t_data *data);
 void	free_img(t_data *data);
+void	print_map(t_data *data, int size);
 
 #endif

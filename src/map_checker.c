@@ -6,7 +6,7 @@
 /*   By: amorilla <amorilla@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 14:40:10 by amorilla          #+#    #+#             */
-/*   Updated: 2023/03/12 16:11:18 by amorilla         ###   ########.fr       */
+/*   Updated: 2023/03/12 17:08:05 by amorilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,30 @@
 
 /*
 	Mapa tiene que estar:
-	-consistente en las medidas (igual de ancho en todas las filas) METER EL ALTO Y ANCHO EN IS RECTANGULAR
+	//-consistente en las medidas (igual de ancho en todas las filas) METER EL ALTO Y ANCHO EN IS RECTANGULAR
 	//-Rodeado de muros (1)
 	-Que tenga caracteres que NO sean "1, P, E, C"
 	-Que tenga inicio (P) y final (E) Y EXCLUSIVAMENTE 1 DE CADA
 	-Que tenga al menos 1 coleccionable (C)
 	-Que el archivo termine en .ber (las ultimas 4 letras y que sea mas de 5 caracteres)
-	-Que puedas recoger todos los coleccionables y llegar al final (A estrella)
+	-Que puedas recoger todos los coleccionables y llegar al final (A estrella) // cuando sea path al coleccionable, la salida es un muro mas
 */
 
 //check if every row has the same length
-static int	map_is_rectangular(char **map)
+static int	map_is_rectangular(t_data *data)
 {
-	size_t	size;
 	int		i;
 
 	i = 0;
-	size = ft_strlen(map[i]);
+	data->map_width = ft_strlen(data->map[i]);
 	i++;
 	while (map[i])
 	{
-		if (size != ft_strlen(map[i]))
-			return (0);
+		if (size != ft_strlen(data->map[i]))
+			return (print_error("Map is not a rectangle"));
 		i++;
 	}
+	data->map_height = i; //mirave si se jode
 	return (1);
 }
 
