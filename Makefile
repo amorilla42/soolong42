@@ -5,7 +5,9 @@ LIBFT	= libft
 GNL_DIR = gnl
 HEADERS = -I $(GNL_DIR) -I $(LIBMLX)/include -I $(LIBFT)
 LIBS = -lglfw -L /Users/${USER}/.brew/opt/glfw/lib/ $(LIBMLX)/libmlx42.a $(LIBFT)/libft.a
-SRCS	= 	src/check_map.c \
+SRCS	= 	src/map_checker.c \
+			src/so_long.c \
+			src/print_error.c \
 			$(GNL_SRCS)
 			
 GNL_SRCS = $(GNL_DIR)/get_next_line.c $(GNL_DIR)/get_next_line_utils.c
