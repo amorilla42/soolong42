@@ -6,7 +6,7 @@
 /*   By: amorilla <amorilla@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:27:33 by amorilla          #+#    #+#             */
-/*   Updated: 2023/03/12 17:43:32 by amorilla         ###   ########.fr       */
+/*   Updated: 2023/03/12 21:05:22 by amorilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,16 @@ void	print_map(t_data *data, int size)
 	{
 		while (j < data->map_width)
 		{
-			mlx_image_to_window(data->mlx, data->floor, j*size, i*size)
+			mlx_image_to_window(data->mlx, data->floor, j * size, i * size);
 			if (data->map[i][j] == '1')
-				mlx_image_to_window(data->mlx, data->fence, j*size, i*size);
+				mlx_image_to_window(data->mlx, data->fence, j * size, i * size);
 			else if (data->map[i][j] == 'C')
-				mlx_image_to_window(data->mlx, data->food, j*size, i*size);
+				mlx_image_to_window(data->mlx, data->food, j * size, i * size);
 			else if (data->map[i][j] == 'P')
-				mlx_image_to_window(data->mlx, data->player, j*size, i*size);
+				mlx_image_to_window(data->mlx, data->player, j * size,
+					i * size);
 			else if (data->map[i][j] == 'E')
-				mlx_image_to_window(data->mlx, data->exit, j*size, i*size);
+				mlx_image_to_window(data->mlx, data->exit, j * size, i * size);
 			j++;
 		}
 		i++;
@@ -42,7 +43,7 @@ int	check_exit(t_data *data, char next_pos)
 {
 	if (data->num_food == 0 && next_pos == 'E')
 	{
-		//freeall map, freeimg, freedata
+		free_all(data);
 		ft_putendl_fd("You Won", 1);
 		exit(EXIT_SUCCESS);
 	}

@@ -1,6 +1,6 @@
 NAME	= so_long
 CFLAGS	= -Wall -Wextra -Werror -D BUFFER_SIZE=42
-LIBMLX	= /Users/amorilla/Desktop/MLX42
+LIBMLX	= /Users/${USER}/Desktop/MLX42
 LIBFT	= libft
 GNL_DIR = gnl
 HEADERS = -I $(GNL_DIR) -I $(LIBMLX)/include -I $(LIBFT)
@@ -12,8 +12,9 @@ SRCS	= 	src/map_checker.c \
 			src/load_sprites.c \
 			src/print_map.c \
 			src/move_player.c \
+			src/free_alloc.c \
 			$(GNL_SRCS)
-			
+
 GNL_SRCS = $(GNL_DIR)/get_next_line.c $(GNL_DIR)/get_next_line_utils.c
 OBJS	= $(SRCS:.c=.o)
 
@@ -26,7 +27,7 @@ libmlx:
 	make -C $(LIBMLX)
 
 %.o: %.c
-	gcc $(CFLAGS) -c $< -o $@
+	gcc $(CFLAGS) $(HEADERS) -c $< -o $@
 
 $(NAME): $(OBJS)
 	gcc $(CFLAGS) $(SRCS) $(LIBFT)/libft.a $(LIBMLX)/libmlx42.a $(HEADERS) $(LIBS) -o $(NAME)

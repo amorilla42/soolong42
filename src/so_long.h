@@ -6,7 +6,7 @@
 /*   By: amorilla <amorilla@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 13:49:01 by amorilla          #+#    #+#             */
-/*   Updated: 2023/03/12 17:26:07 by amorilla         ###   ########.fr       */
+/*   Updated: 2023/03/12 21:04:47 by amorilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 typedef struct s_data
 {
-	mlx_t	*mlx;
+	mlx_t		*mlx;
 	mlx_image_t	*player;
 	mlx_image_t	*floor;
 	mlx_image_t	*fence;
@@ -34,7 +34,7 @@ typedef struct s_data
 	int			map_height;
 	int			map_width;
 	int			num_movements;
-} t_data;
+}				t_data;
 
 int		is_valid_map(t_data *data);
 int		print_error(char *str_error);
@@ -42,5 +42,10 @@ int		map_inner_check(t_data *data);
 void	load_sprites(t_data *data);
 void	free_img(t_data *data);
 void	print_map(t_data *data, int size);
+void	free_map_and_data_fd(t_data *data, int fd);
+void	free_map_and_data(t_data *data, char *str);
+void	free_all(t_data *data);
+void	press_key(mlx_key_data_t keydata, void *game_data);
+int		check_exit(t_data *data, char next_pos);
 
 #endif

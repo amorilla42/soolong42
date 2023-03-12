@@ -6,11 +6,11 @@
 /*   By: amorilla <amorilla@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:21:57 by amorilla          #+#    #+#             */
-/*   Updated: 2023/03/12 15:24:40 by amorilla         ###   ########.fr       */
+/*   Updated: 2023/03/12 21:04:10 by amorilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h";
+#include "so_long.h"
 
 int	print_error(char *str_error)
 {

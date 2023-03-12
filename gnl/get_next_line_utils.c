@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amorilla <amorilla@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: amorilla <amorilla@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 19:35:38 by amorilla          #+#    #+#             */
-/*   Updated: 2022/05/26 18:28:00 by amorilla         ###   ########.fr       */
+/*   Updated: 2023/03/12 18:59:29 by amorilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	*ft_calloc(size_t num, size_t size)
+void	*ft_gnlcalloc(size_t num, size_t size)
 {
 	size_t	mul;
 	char	*res;
@@ -30,7 +30,7 @@ void	*ft_calloc(size_t num, size_t size)
 	return (res);
 }
 
-size_t	ft_strlen(char *str)
+size_t	ft_gnlstrlen(char *str)
 {
 	size_t	len;
 
@@ -40,7 +40,7 @@ size_t	ft_strlen(char *str)
 	return (len);
 }
 
-void	ft_strjoin(char **s1, char *s2, size_t s2_len)
+void	ft_gnlstrjoin(char **s1, char *s2, size_t s2_len)
 {
 	char	*res;
 	size_t	i;
@@ -48,8 +48,8 @@ void	ft_strjoin(char **s1, char *s2, size_t s2_len)
 
 	if (s2_len == 0)
 		return ;
-	s1_len = ft_strlen(*s1);
-	res = (char *) ft_calloc(s1_len + s2_len + 1, sizeof(char));
+	s1_len = ft_gnlstrlen(*s1);
+	res = (char *) ft_gnlcalloc(s1_len + s2_len + 1, sizeof(char));
 	if (!res)
 	{
 		free(*s1);
@@ -66,7 +66,7 @@ void	ft_strjoin(char **s1, char *s2, size_t s2_len)
 	*s1 = res;
 }
 
-char	*ft_substr(char *s, unsigned int start, size_t len)
+char	*ft_gnlsubstr(char *s, unsigned int start, size_t len)
 {
 	char	*res;
 	size_t	s_len;
@@ -75,14 +75,14 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (0);
-	s_len = ft_strlen(s);
+	s_len = ft_gnlstrlen(s);
 	if (start >= s_len)
 		return (0);
 	else if (s_len - start < len)
 		total_len = s_len - start;
 	else
 		total_len = len;
-	res = (char *) ft_calloc(total_len + 1, sizeof(char));
+	res = (char *) ft_gnlcalloc(total_len + 1, sizeof(char));
 	if (!res)
 		return (0);
 	i = 0;
@@ -94,7 +94,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	return (res);
 }
 
-char	*ft_strdup(char *s1)
+char	*ft_gnlstrdup(char *s1)
 {
 	char	*res;
 	int		len;
@@ -102,8 +102,8 @@ char	*ft_strdup(char *s1)
 
 	if (!s1)
 		return (0);
-	len = ft_strlen(s1);
-	res = (char *) ft_calloc(len + 1, sizeof(char));
+	len = ft_gnlstrlen(s1);
+	res = (char *) ft_gnlcalloc(len + 1, sizeof(char));
 	if (!res)
 		return (0);
 	i = 0;

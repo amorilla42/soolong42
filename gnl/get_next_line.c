@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amorilla <amorilla@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: amorilla <amorilla@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 19:55:14 by amorilla          #+#    #+#             */
-/*   Updated: 2022/05/26 18:14:22 by amorilla         ###   ########.fr       */
+/*   Updated: 2023/03/12 19:00:27 by amorilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ int	ft_checkstaticbuff(char **line, char **staticbuff)
 	}
 	else if (ft_hasendl(&idx, *staticbuff))
 	{
-		*line = ft_substr(*staticbuff, 0, idx + 1);
-		bufaux = ft_substr(*staticbuff, idx + 1, ft_strlen(*staticbuff));
+		*line = ft_gnlsubstr(*staticbuff, 0, idx + 1);
+		bufaux = ft_gnlsubstr(*staticbuff, idx + 1, ft_gnlstrlen(*staticbuff));
 		free (*staticbuff);
-		*staticbuff = ft_strdup(bufaux);
+		*staticbuff = ft_gnlstrdup(bufaux);
 		free(bufaux);
 		return (1);
 	}
-	*line = ft_strdup(*staticbuff);
+	*line = ft_gnlstrdup(*staticbuff);
 	free(*staticbuff);
 	*staticbuff = 0;
 	return (0);
@@ -67,10 +67,10 @@ int	ft_readline(int fd, char *buffer, char **line, int *eol_idx)
 	if (b_read == -1)
 		return (-1);
 	if (ft_hasendl(eol_idx, buffer))
-		ft_strjoin(line, buffer, ((size_t)(*eol_idx)) + 1);
+		ft_gnlstrjoin(line, buffer, ((size_t)(*eol_idx)) + 1);
 	else
 	{
-		ft_strjoin(line, buffer, ft_strlen(buffer));
+		ft_gnlstrjoin(line, buffer, ft_gnlstrlen(buffer));
 		*eol_idx = -1;
 	}
 	return (b_read);
@@ -98,9 +98,9 @@ char	*ft_maneyador(int fd, char *buff, char **staticbuff)
 	free(*staticbuff);
 	*staticbuff = 0;
 	if (indexeol == -1)
-		ft_strjoin(&line, buff, ft_strlen(buff));
+		ft_gnlstrjoin(&line, buff, ft_gnlstrlen(buff));
 	else
-		*staticbuff = ft_substr(buff, (size_t) indexeol + 1, ft_strlen(buff));
+		*staticbuff = ft_gnlsubstr(buff, (size_t) indexeol + 1, ft_gnlstrlen(buff));
 	return (line);
 }
 
@@ -113,7 +113,7 @@ char	*get_next_line(int fd)
 	line = 0;
 	if (fd < 0 || fd >= 1024 || BUFFER_SIZE <= 0)
 		return (0);
-	buffer = ft_calloc(sizeof(char), (BUFFER_SIZE + 1));
+	buffer = ft_gnlcalloc(sizeof(char), (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (0);
 	line = ft_maneyador(fd, buffer, &staticbuffer[fd]);

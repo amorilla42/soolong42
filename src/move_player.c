@@ -6,13 +6,14 @@
 /*   By: amorilla <amorilla@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:43:14 by amorilla          #+#    #+#             */
-/*   Updated: 2023/03/12 17:48:21 by amorilla         ###   ########.fr       */
+/*   Updated: 2023/03/12 21:05:59 by amorilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	move_up(t_data *data){
+static void	move_up(t_data *data)
+{
 	if ((data->map[data->pos_player_x][data->pos_player_y - 1] != '1')
 		&& !check_exit(data,
 		data->map[data->pos_player_x][data->pos_player_y - 1]))
@@ -29,7 +30,8 @@ void	move_up(t_data *data){
 	}
 }
 
-void	move_down(t_data data){
+static void	move_down(t_data *data)
+{
 	if ((data->map[data->pos_player_x][data->pos_player_y + 1] != '1')
 		&& !check_exit(data,
 		data->map[data->pos_player_x][data->pos_player_y + 1]))
@@ -46,7 +48,8 @@ void	move_down(t_data data){
 	}
 }
 
-void	move_left(t_data data){
+static void	move_left(t_data *data)
+{
 	if ((data->map[data->pos_player_x - 1][data->pos_player_y] != '1')
 		&& !check_exit(data,
 		data->map[data->pos_player_x - 1][data->pos_player_y]))
@@ -63,7 +66,8 @@ void	move_left(t_data data){
 	}
 }
 
-void	move_right(t_data data){
+static void	move_right(t_data *data)
+{
 	if ((data->map[data->pos_player_x + 1][data->pos_player_y] != '1')
 		&& !check_exit(data,
 		data->map[data->pos_player_x + 1][data->pos_player_y]))
@@ -82,12 +86,15 @@ void	move_right(t_data data){
 
 void	press_key(mlx_key_data_t keydata, void *game_data)
 {
-	t_data *data;
+	t_data	*data;
 
 	data = game_data;
 	(void)keydata;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
-		exit(EXIT_SUCCESS);//freeall y exit success
+	{
+		free_all(data);
+		exit(EXIT_SUCCESS);
+	}
 	else if (mlx_is_key_down(data->mlx, MLX_KEY_W))
 		move_up(data);
 	else if (mlx_is_key_down(data->mlx, MLX_KEY_A))

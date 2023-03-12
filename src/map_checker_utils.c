@@ -6,7 +6,7 @@
 /*   By: amorilla <amorilla@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:09:52 by amorilla          #+#    #+#             */
-/*   Updated: 2023/03/12 16:13:48 by amorilla         ###   ########.fr       */
+/*   Updated: 2023/03/12 21:04:04 by amorilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,20 @@
 
 static int	value_is_valid(t_data *data, int i, int j)
 {
-	
+	if (data->map[i][j] == 'C')
+		data->num_food++;
+	else if (data->map[i][j] == 'P')
+	{
+		data->num_players++;
+		data->pos_player_x = i;//posibles problemos
+		data->pos_player_y = j;
+	}
+	else if (data->map[i][j] == 'E')
+		data->num_exit++;
+	else if ((data->map[i][j] != '1') && (data->map[i][j] != '\n')
+		&& (data->map[i][j] != '0'))
+		return (0);
+	return (1);
 }
 
 int	map_inner_check(t_data *data)
@@ -28,11 +41,14 @@ int	map_inner_check(t_data *data)
 	{
 		while (j < data->map_width)
 		{
-			if(data->map[i][j] == '1')
+			if (!value_is_valid(data, i, j))
+				free_map_and_data(data, "Invalid char in map");
 			j++;
 		}
 		i++;
 	}
-	
+	if (data->num_food < 1 || data->num_players != 1 || data->num_exit != 1)
+		free_map_and_data(data,
+			"There is more than one E or P, or less than one C in map");
 	return (1);
 }
