@@ -6,7 +6,7 @@
 /*   By: amorilla <amorilla@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 13:49:01 by amorilla          #+#    #+#             */
-/*   Updated: 2023/03/12 15:39:51 by amorilla         ###   ########.fr       */
+/*   Updated: 2023/03/12 16:27:03 by amorilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ typedef struct s_data
 	int			num_movements;
 } t_data;
 
-int	is_valid_map(t_data *data);
-int	print_error(char *str_error);
+int		is_valid_map(t_data *data);
+int		print_error(char *str_error);
+int		map_inner_check(t_data *data);
+void	load_sprites(t_data *data);
+void	free_img(t_data *data);
 
 #endif

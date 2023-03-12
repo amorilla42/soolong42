@@ -6,7 +6,7 @@
 /*   By: amorilla <amorilla@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 14:40:10 by amorilla          #+#    #+#             */
-/*   Updated: 2023/03/12 15:39:47 by amorilla         ###   ########.fr       */
+/*   Updated: 2023/03/12 16:11:18 by amorilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 	Mapa tiene que estar:
-	//-consistente en las medidas (igual de ancho en todas las filas)
+	-consistente en las medidas (igual de ancho en todas las filas) METER EL ALTO Y ANCHO EN IS RECTANGULAR
 	//-Rodeado de muros (1)
 	-Que tenga caracteres que NO sean "1, P, E, C"
 	-Que tenga inicio (P) y final (E) Y EXCLUSIVAMENTE 1 DE CADA
@@ -62,20 +62,6 @@ static int	map_has_walls(char **map)
 		i++;
 	}
 	return (1);
-}
-
-int	map_inner_check(char **map)
-{
-	int	num_p;
-	int	num_e;
-	int	num_c;
-	int	i;
-	int	j;
-	
-	num_c = 0;
-	i = 0;
-	j = 0;
-	num_e = 0;
 }
 
 int	is_valid_map(t_data *data)

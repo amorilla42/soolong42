@@ -8,6 +8,10 @@ LIBS = -lglfw -L /Users/${USER}/.brew/opt/glfw/lib/ $(LIBMLX)/libmlx42.a $(LIBFT
 SRCS	= 	src/map_checker.c \
 			src/so_long.c \
 			src/print_error.c \
+			src/map_checker_utils.c \
+			src/load_sprites.c \
+			src/print_map.c \
+			src/move_player.c \
 			$(GNL_SRCS)
 			
 GNL_SRCS = $(GNL_DIR)/get_next_line.c $(GNL_DIR)/get_next_line_utils.c
