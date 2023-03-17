@@ -1,5 +1,5 @@
 NAME	= so_long
-CFLAGS	= -Wall -Wextra -Werror -D BUFFER_SIZE=42
+CFLAGS	= -Wall -Wextra -Werror -D BUFFER_SIZE=42 -g
 LIBMLX	= /Users/${USER}/Desktop/MLX42
 LIBFT	= libft
 GNL_DIR = gnl
@@ -13,6 +13,7 @@ SRCS	= 	src/map_checker.c \
 			src/print_map.c \
 			src/move_player.c \
 			src/free_alloc.c \
+			src/path_finding.c \
 			$(GNL_SRCS)
 
 GNL_SRCS = $(GNL_DIR)/get_next_line.c $(GNL_DIR)/get_next_line_utils.c

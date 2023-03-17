@@ -6,7 +6,7 @@
 /*   By: amorilla <amorilla@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 20:06:23 by amorilla          #+#    #+#             */
-/*   Updated: 2023/03/12 21:03:36 by amorilla         ###   ########.fr       */
+/*   Updated: 2023/03/17 17:29:27 by amorilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,20 @@ void	free_map_and_data(t_data *data, char *str)
 	exit(EXIT_FAILURE);
 }
 
+void	free_copymap(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (data->copy_map[i])
+	{
+		free(data->copy_map[i]);
+		i++;
+	}
+	free(data->copy_map);
+}
+
+//el copymap falta
 void	free_all(t_data *data)
 {
 	int	i;
