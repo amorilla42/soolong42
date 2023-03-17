@@ -6,7 +6,7 @@
 /*   By: amorilla <amorilla@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 13:49:01 by amorilla          #+#    #+#             */
-/*   Updated: 2023/03/17 17:30:22 by amorilla         ###   ########.fr       */
+/*   Updated: 2023/03/17 19:27:41 by amorilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,9 @@ void	press_key(mlx_key_data_t keydata, void *game_data);
 int		check_exit(t_data *data, char next_pos);
 void	free_copymap(t_data *data);
 int		map_path_check(t_data *data);
+void	free_data(t_data *data, char *msg);
+void	print_error_and_exit(char *str_error);
+int		free_moves(int *movs, int val);
+int		free_copy_error(t_data *data);
 
 #endif

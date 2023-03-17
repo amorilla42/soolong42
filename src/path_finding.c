@@ -6,7 +6,7 @@
 /*   By: amorilla <amorilla@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 11:49:12 by amorilla          #+#    #+#             */
-/*   Updated: 2023/03/17 17:41:52 by amorilla         ###   ########.fr       */
+/*   Updated: 2023/03/17 19:29:33 by amorilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ static void	copymap(t_data *data)
 		i++;
 	}
 }
+
 //up x y, down x y, right x y, left x y
 static int	*get_moves(t_data *data)
 {
-	int *moves;
+	int	*moves;
 
 	moves = ft_calloc(8, sizeof(int));
 	if (!moves)
@@ -51,7 +52,7 @@ static int	*get_moves(t_data *data)
 	return (moves);
 }
 
-static int check_legal_move(t_data *data, int mov_x, int mov_y, char elem)
+static int	check_legal_move(t_data *data, int mov_x, int mov_y, char elem)
 {
 	if (mov_x < 0 || mov_y < 0 || mov_x >= data->map_height
 		|| mov_y >= data->map_width)
@@ -69,10 +70,7 @@ static int	pathfind(t_data *data, int x, int y, char elem)
 	moves = get_moves(data);
 	i = 0;
 	if (data->posx_cpy == x && data->posy_cpy == y)
-	{
-		free(moves);
-		return (1);
-	}
+		return (free_moves(moves, 1));
 	while (i < 8)
 	{
 		if (check_legal_move(data, moves[i], moves[i + 1], elem))
@@ -81,23 +79,12 @@ static int	pathfind(t_data *data, int x, int y, char elem)
 			data->posx_cpy = moves[i];
 			data->posy_cpy = moves[i + 1];
 			if (pathfind(data, x, y, elem))
-			{
-				free(moves);
-				return (1);
-			}
+				return (free_moves(moves, 1));
 		}
 		i += 2;
 	}
-	free(moves);
-	return (0);
+	return (free_moves(moves, 0));
 }
-
-static int	free_copy_error(t_data *data)
-{
-	free_copymap(data);
-	return (print_error("Worm or exit not reachable"));
-}
-
 
 int	map_path_check(t_data *data)
 {

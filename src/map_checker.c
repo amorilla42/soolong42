@@ -6,22 +6,11 @@
 /*   By: amorilla <amorilla@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 14:40:10 by amorilla          #+#    #+#             */
-/*   Updated: 2023/03/17 17:33:04 by amorilla         ###   ########.fr       */
+/*   Updated: 2023/03/17 19:15:51 by amorilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-/*
-	Mapa tiene que estar:
-	//-consistente en las medidas (igual de ancho en todas las filas) METER EL ALTO Y ANCHO EN IS RECTANGULAR
-	//-Rodeado de muros (1)
-	//-Que tenga caracteres que NO sean "1, P, E, C"
-	//-Que tenga inicio (P) y final (E) Y EXCLUSIVAMENTE 1 DE CADA
-	//-Que tenga al menos 1 coleccionable (C)
-	//-Que el archivo termine en .ber (las ultimas 4 letras y que sea mas de 5 caracteres)
-	-Que puedas recoger todos los coleccionables y llegar al final (A estrella) // cuando sea path al coleccionable, la salida es un muro mas
-*/
 
 //check if every row has the same length
 static int	map_is_rectangular(t_data *data)
@@ -69,7 +58,6 @@ static int	map_has_walls(t_data *data, char **map)
 
 int	is_valid_map(t_data *data)
 {
-	//if es true la funcion de hacer pathfinding con cada gusano y despues con la salida AQUI
 	return (map_is_rectangular(data)
 		&& map_has_walls(data, data->map) && map_inner_check(data)
 		&& map_path_check(data));

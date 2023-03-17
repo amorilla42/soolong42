@@ -6,7 +6,7 @@
 /*   By: amorilla <amorilla@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 19:55:14 by amorilla          #+#    #+#             */
-/*   Updated: 2023/03/12 19:00:27 by amorilla         ###   ########.fr       */
+/*   Updated: 2023/03/17 19:28:32 by amorilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,8 @@ char	*ft_maneyador(int fd, char *buff, char **staticbuff)
 	if (indexeol == -1)
 		ft_gnlstrjoin(&line, buff, ft_gnlstrlen(buff));
 	else
-		*staticbuff = ft_gnlsubstr(buff, (size_t) indexeol + 1, ft_gnlstrlen(buff));
+		*staticbuff = ft_gnlsubstr(buff,
+				(size_t) indexeol + 1, ft_gnlstrlen(buff));
 	return (line);
 }
 

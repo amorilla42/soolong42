@@ -6,7 +6,7 @@
 /*   By: amorilla <amorilla@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 13:49:06 by amorilla          #+#    #+#             */
-/*   Updated: 2023/03/17 17:32:22 by amorilla         ###   ########.fr       */
+/*   Updated: 2023/03/17 19:23:52 by amorilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,29 +25,26 @@ static int	check_file_extension(char *filename)
 
 static void	allocate_map(t_data *data, char *filename)
 {
-	int	fd;
-	int	size;
+	int		fd;
+	int		size;
+	char	*gnl;
 
 	size = 0;
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
+		free_data(data, "Cannot open file");
+	gnl = get_next_line(fd);
+	while (gnl)
 	{
-		print_error("Cannot open file");
-		free(data);
-		exit(EXIT_FAILURE);
-	}
-	while (get_next_line(fd))
+		free(gnl);
 		size++;
+		gnl = get_next_line(fd);
+	}
 	data->map_height = size;
 	data->map = ft_calloc(size + 1, sizeof(char *));
-	if (!data->map)
-	{
-		print_error("Cannot allocate memory");
-		free(data);
-		close(fd);
-		exit(EXIT_FAILURE);
-	}
 	close(fd);
+	if (!data->map)
+		free_data(data, "Cannot allocate memory");
 }
 
 static void	insert_data_to_map(t_data *data, char *filename)
@@ -95,16 +92,10 @@ int	main(int argc, char **args)
 	t_data	*game_data;
 
 	if (argc != 2)
-	{
-		print_error("Invalid number of arguments");
-		exit(EXIT_FAILURE);
-	}
+		print_error_and_exit("Invalid number of arguments");
 	game_data = ft_calloc(1, sizeof(t_data));
 	if (!game_data)
-	{
-		print_error("Cannot allocate memory");
-		exit(EXIT_FAILURE);
-	}
+		print_error_and_exit("Cannot allocate memory");
 	load_map(game_data, args[1]);
 	if (is_valid_map(game_data))
 	{
@@ -118,5 +109,6 @@ int	main(int argc, char **args)
 		mlx_loop(game_data->mlx);
 		free_all(game_data);
 	}
+	free_map_and_data(game_data, "Map is not valid");
 	return (0);
 }
