@@ -6,7 +6,7 @@
 /*   By: amorilla <amorilla@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:09:52 by amorilla          #+#    #+#             */
-/*   Updated: 2023/03/17 11:44:32 by amorilla         ###   ########.fr       */
+/*   Updated: 2023/03/17 11:52:47 by amorilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	value_is_valid(t_data *data, int i, int j)
 	else if (data->map[i][j] == 'P')
 	{
 		data->num_players++;
-		data->pos_player_x = i;//posibles problemos
+		data->pos_player_x = i;
 		data->pos_player_y = j;
 	}
 	else if (data->map[i][j] == 'E')
