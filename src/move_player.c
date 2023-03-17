@@ -6,13 +6,13 @@
 /*   By: amorilla <amorilla@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:43:14 by amorilla          #+#    #+#             */
-/*   Updated: 2023/03/12 21:05:59 by amorilla         ###   ########.fr       */
+/*   Updated: 2023/03/17 11:46:12 by amorilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-static void	move_up(t_data *data)
+//up
+static void	move_left(t_data *data)
 {
 	if ((data->map[data->pos_player_x][data->pos_player_y - 1] != '1')
 		&& !check_exit(data,
@@ -29,8 +29,8 @@ static void	move_up(t_data *data)
 		print_map(data, 32);
 	}
 }
-
-static void	move_down(t_data *data)
+//down
+static void	move_right(t_data *data)
 {
 	if ((data->map[data->pos_player_x][data->pos_player_y + 1] != '1')
 		&& !check_exit(data,
@@ -47,8 +47,8 @@ static void	move_down(t_data *data)
 		print_map(data, 32);
 	}
 }
-
-static void	move_left(t_data *data)
+//left
+static void	move_up(t_data *data)
 {
 	if ((data->map[data->pos_player_x - 1][data->pos_player_y] != '1')
 		&& !check_exit(data,
@@ -65,8 +65,8 @@ static void	move_left(t_data *data)
 		print_map(data, 32);
 	}
 }
-
-static void	move_right(t_data *data)
+//right
+static void	move_down(t_data *data)
 {
 	if ((data->map[data->pos_player_x + 1][data->pos_player_y] != '1')
 		&& !check_exit(data,

@@ -6,7 +6,7 @@
 /*   By: amorilla <amorilla@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 14:40:10 by amorilla          #+#    #+#             */
-/*   Updated: 2023/03/12 21:03:59 by amorilla         ###   ########.fr       */
+/*   Updated: 2023/03/17 11:43:14 by amorilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,17 @@
 static int	map_is_rectangular(t_data *data)
 {
 	int		i;
+	int		row_len;
 
 	i = 0;
 	data->map_width = ft_strlen(data->map[i]) - 1;
 	i++;
 	while (data->map[i])
 	{
-		if (data->map_width != (int)(ft_strlen(data->map[i]) - 1))
+		row_len = (int)(ft_strlen(data->map[i]) - 1);
+		if (i == data->map_height - 1)
+			row_len++;
+		if (data->map_width != row_len)
 			return (print_error("Map is not a rectangle"));
 		i++;
 	}
@@ -46,17 +50,17 @@ static int	map_has_walls(char **map)
 	size_t	j;
 
 	i = 0;
-	j = 0;
+	j = 1;
 	while (map[i][j])
 	{
-		if ((map[i][j] != 1) || (map[ft_strlen(map[i]) - 1][j] != 1))
+		if ((map[i][j - 1] != '1') || (map[ft_strlen(map[i]) - 2][j - 1] != '1'))
 			return (print_error("Map is not surrounded by walls usted"));
 		j++;
 	}
 	i++;
 	while (i < ft_strlen(map[i]) - 1)
 	{
-		if ((map[i][0] != 1) || (map[i][ft_strlen(map[i]) - 1] != 1))
+		if ((map[i][0] != '1') || (map[i][ft_strlen(map[i]) - 2] != '1'))
 			return (print_error("Map is not surrounded by walls"));
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: amorilla <amorilla@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:27:33 by amorilla          #+#    #+#             */
-/*   Updated: 2023/03/12 21:05:22 by amorilla         ###   ########.fr       */
+/*   Updated: 2023/03/17 11:36:00 by amorilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	print_map(t_data *data, int size)
 	int	j;
 
 	i = 0;
-	j = 0;
 	while (i < data->map_height)
 	{
+		j = 0;
 		while (j < data->map_width)
 		{
 			mlx_image_to_window(data->mlx, data->floor, j * size, i * size);

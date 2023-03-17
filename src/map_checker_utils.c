@@ -6,7 +6,7 @@
 /*   By: amorilla <amorilla@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:09:52 by amorilla          #+#    #+#             */
-/*   Updated: 2023/03/12 21:04:04 by amorilla         ###   ########.fr       */
+/*   Updated: 2023/03/17 11:44:32 by amorilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ int	map_inner_check(t_data *data)
 	int	j;
 
 	i = 0;
-	j = 0;
+	
 	while (i < data->map_height)
 	{
+		j = 0;
 		while (j < data->map_width)
 		{
 			if (!value_is_valid(data, i, j))
